@@ -330,4 +330,9 @@ api.delete('/project/:id/members/:userId', async (req, res) => {
   }
 });
 
+// Health check route
+api.get('/health', (req, res) => {
+  res.json({ status: 'ok', time: new Date().toISOString() });
+});
+
 export default api
