@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import AddProjectModal from './AddProjectModal'
-import axios from 'axios'
+import axios from '../axios'
 import { Link } from 'react-router-dom'
 // import toast from 'react-hot-toast'
 const Sidebar = ({ user }) => {
@@ -25,7 +25,7 @@ const Sidebar = ({ user }) => {
 
   const projectData = () => {
     if (!user) return;
-    axios.get('http://localhost:9000/projects/')
+    axios.get('/projects/')
       .then((res) => {
         setProjects(res.data)
       })

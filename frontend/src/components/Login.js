@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:9000/auth/login', { email, password });
+      const res = await axios.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       onLogin(res.data.user);
       toast.success('Logged in successfully!');

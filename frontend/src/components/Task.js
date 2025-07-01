@@ -124,9 +124,7 @@ function Task() {
 
     useEffect(() => {
         if (!isAddTaskModalOpen || isRenderChange) {
-            axios.get(`http://localhost:9000/project/${projectId}`, {
-                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-            })
+            axios.get(`/project/${projectId}`)
                 .then((res) => {
                     setTitle(res.data[0].title)
                     setColumns({
@@ -163,9 +161,7 @@ function Task() {
     }, [projectId, isAddTaskModalOpen, isRenderChange]);
 
     const updateTodo = (data) => {
-        axios.put(`http://localhost:9000/project/${projectId}/todo`, data, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-        })
+        axios.put(`/project/${projectId}/todo`, data)
             .then((res) => {
             }).catch((error) => {
                 toast.error('Something went wrong')
@@ -174,7 +170,7 @@ function Task() {
 
     const handleDelete = (e, taskId) => {
         e.stopPropagation();
-        axios.delete(`http://localhost:9000/project/${projectId}/task/${taskId}`)
+        axios.delete(`/project/${projectId}/task/${taskId}`)
             .then((res) => {
                 toast.success('Task is deleted')
                 setRenderChange(true)

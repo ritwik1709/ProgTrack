@@ -12,9 +12,7 @@ const ManageMembersModal = ({ projectId, isOpen, onClose, currentUserId }) => {
   const [error, setError] = useState('');
 
   const fetchMembers = () => {
-    axios.get(`http://localhost:9000/project/${projectId}/members`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    })
+    axios.get(`/project/${projectId}/members`)
       .then(res => setMembers(res.data))
       .catch(() => setMembers([]));
   };
@@ -29,9 +27,7 @@ const ManageMembersModal = ({ projectId, isOpen, onClose, currentUserId }) => {
     e.preventDefault();
     setLoading(true); setError('');
     try {
-      await axios.post(`http://localhost:9000/project/${projectId}/members`, { email, role }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
+      await axios.post(`/project/${projectId}/members`, { email, role });
       setEmail(''); setRole('Member');
       fetchMembers();
     } catch (err) {
@@ -50,9 +46,7 @@ const ManageMembersModal = ({ projectId, isOpen, onClose, currentUserId }) => {
   const handleRoleChange = async (userId, newRole) => {
     setLoading(true); setError('');
     try {
-      await axios.put(`http://localhost:9000/project/${projectId}/members/${userId}`, { role: newRole }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
+      await axios.put(`/project/${projectId}/members/${userId}`, { role: newRole });
       fetchMembers();
     } catch (err) {
       if (err.response && err.response.status === 403) {
@@ -70,9 +64,7 @@ const ManageMembersModal = ({ projectId, isOpen, onClose, currentUserId }) => {
   const handleRemove = async (userId) => {
     setLoading(true); setError('');
     try {
-      await axios.delete(`http://localhost:9000/project/${projectId}/members/${userId}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
+      await axios.delete(`/project/${projectId}/members/${userId}`);
       fetchMembers();
     } catch (err) {
       if (err.response && err.response.status === 403) {

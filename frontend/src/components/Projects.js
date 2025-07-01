@@ -9,9 +9,7 @@ const Projects = ({ user }) => {
   const navigate = useNavigate();
 
   const fetchProjects = () => {
-    axios.get('http://localhost:9000/projects/', {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-    })
+    axios.get('/projects/')
       .then(res => setProjects(res.data))
       .catch(() => setProjects([]));
   };

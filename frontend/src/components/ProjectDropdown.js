@@ -8,9 +8,7 @@ const ProjectDropdown = ({ id, navigate }) => {
     const [isModalOpen, setModalState] = useState(false)
     const handleDelete = async () => {
         try {
-            const data = await axios.delete(`http://localhost:9000/project/${id}`, {
-                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-            })
+            const data = await axios.delete(`/project/${id}`)
             if (data.data.deletedCount > 0) {
                 toast.success('Record deleted successfully')
                 navigate('/')

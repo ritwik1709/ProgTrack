@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const Register = ({ onRegister }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:9000/auth/register', { username, email, password });
+      await axios.post('/auth/register', { username, email, password });
       toast.success('Registered successfully! Please login.');
       if (onRegister) onRegister();
     } catch (err) {
