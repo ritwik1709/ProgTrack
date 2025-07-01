@@ -20,13 +20,6 @@ A modern, collaborative project management web app for teams and individuals. Bu
 
 ---
 
-## 🖥️ Screenshots
-
-![Homepage](./screenshots/homepage.png)
-![Project Board](./screenshots/board.png)
-
----
-
 ## ⚡ Getting Started
 
 ### Prerequisites
@@ -62,8 +55,10 @@ npm start
 ## 🔑 Environment Variables (Backend)
 Create a `.env` file in `/backend`:
 ```
-MONGO_URI=mongodb://localhost:27017/progtrack
-JWT_SECRET=your_jwt_secret
+MONGODB_PARH=.....
+JWT_SECRET=.....
+SERVER_PORT=9000
+CORS_ORIGIN=http://localhost:3000
 ```
 
 ---
