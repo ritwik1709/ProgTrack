@@ -11,12 +11,20 @@ mongoose.connect(process.env.MONGODB_PATH, () => {
 
 
 const PORT = process.env.SERVER_PORT || 9000
-const origin = process.env.CORS_ORIGIN || 'http://localhost:3000'
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000').split(',');
 
 const app = express()
 
 app.use(cors({
-    origin
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps, curl, Postman)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, origin);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
 }));
 app.use(express.json())
 app.use(express.urlencoded())
