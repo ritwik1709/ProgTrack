@@ -8,6 +8,6 @@ test('renders ProgTrack app', () => {
       <App />
     </MemoryRouter>
   );
-  const appElement = screen.getByText(/ProgTrack/i);
+  const appElement = screen.getByText(/Welcome to ProgTrack/i);
   expect(appElement).toBeInTheDocument();
 });
