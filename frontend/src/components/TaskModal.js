@@ -28,7 +28,7 @@ const TaskModal = ({ isOpen, setIsOpen, id }) => {
                     toast.error('something went wrong')
                 })
         }
-    }, [isOpen]);
+    }, [isOpen, id.projectId, id.id]);
 
     return (
         <Transition appear show={isOpen} as={Fragment}>

@@ -20,9 +20,8 @@ const AddTaskModal = ({ isAddTaskModalOpen, setAddTaskModal, projectId = null, t
                 .catch((error) => {
                     toast.error('Something went wrong')
                 })
-            console.log('edit function call')
         }
-    }, [isAddTaskModalOpen]);
+    }, [isAddTaskModalOpen, edit, projectId, taskId]);
 
     const handleSubmit = (e) => {
         e.preventDefault()

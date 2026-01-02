@@ -19,6 +19,7 @@ const ManageMembersModal = ({ projectId, isOpen, onClose, currentUserId }) => {
 
   useEffect(() => {
     if (isOpen) fetchMembers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const isOwner = members.some(m => m.user._id === currentUserId && m.role === 'Owner');
