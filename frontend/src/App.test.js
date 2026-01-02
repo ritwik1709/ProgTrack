@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
+test('renders ProgTrack app', () => {
   render(
     <MemoryRouter>
       <App />
     </MemoryRouter>
   );
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const appElement = screen.getByText(/ProgTrack/i);
+  expect(appElement).toBeInTheDocument();
 });
